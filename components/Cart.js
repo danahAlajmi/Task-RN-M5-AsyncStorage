@@ -1,7 +1,7 @@
-import { observer, inject } from 'mobx-react';
-import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
-import cartStore from '../stores/cartStore';
+import { observer, inject } from "mobx-react";
+import React from "react";
+import { View, Text, Button, FlatList, StyleSheet } from "react-native";
+import cartStore from "../stores/cartStore";
 
 const Cart = () => {
   const data = cartStore.getItems().slice();
@@ -32,7 +32,12 @@ const Cart = () => {
         renderItem={renderItem}
         ListFooterComponent={Totals}
       />
-      <Button title="clear" onPress={() => {}} />
+      <Button
+        title="clear"
+        onPress={() => {
+          cartStore.clearCart();
+        }}
+      />
     </View>
   );
 };
@@ -41,34 +46,34 @@ export default observer(Cart);
 
 const styles = StyleSheet.create({
   cartLine: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   cartLineTotal: {
-    flexDirection: 'row',
-    borderTopColor: '#dddddd',
+    flexDirection: "row",
+    borderTopColor: "#dddddd",
     borderTopWidth: 1,
   },
   lineTotal: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   lineLeft: {
     fontSize: 20,
     lineHeight: 40,
-    color: '#333333',
+    color: "#333333",
   },
   lineRight: {
     flex: 1,
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     lineHeight: 40,
-    color: '#333333',
-    textAlign: 'right',
+    color: "#333333",
+    textAlign: "right",
   },
   itemsList: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: "#eeeeee",
   },
   itemsListContainer: {
-    backgroundColor: '#eeeeee',
+    backgroundColor: "#eeeeee",
     paddingVertical: 8,
     marginHorizontal: 8,
   },
